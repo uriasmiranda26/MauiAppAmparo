@@ -1,0 +1,14 @@
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:MauiAppAmparo.Views"
+       x:Class="MauiAppAmparo.AppShell">
+
+    <ShellContent Title="Login" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Title="Cadastro" ContentTemplate="{DataTemplate views:CadastroPage}" />
+    <ShellContent Title="Menu" ContentTemplate="{DataTemplate views:MenuPage}" />
+    <ShellContent Title="Pressão Arterial" ContentTemplate="{DataTemplate views:PressaoPage}" />
+    <ShellContent Title="Índice Glicêmico" ContentTemplate="{DataTemplate views:GlicemiaPage}" />
+    <ShellContent Title="Lembretes" ContentTemplate="{DataTemplate views:LembretesPage}" />
+    <ShellContent Title="Informações" ContentTemplate="{DataTemplate views:InformacoesPage}" />
+    <ShellContent Title="Contato de Emergência" ContentTemplate="{DataTemplate views:ContatoPage}" />
+</Shell>

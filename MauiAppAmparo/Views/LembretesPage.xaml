@@ -1,0 +1,27 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAmparo.Views.LembretesPage"
+             BackgroundColor="#003366">
+
+    <VerticalStackLayout Padding="20" VerticalOptions="Start">
+        <Label Text="Lembretes" FontSize="24" HorizontalOptions="Center" TextColor="White"/>
+
+        <BoxView HeightRequest="20" Color="Transparent"/>
+      
+
+        <ListView x:Name="lstLembretes">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Nome}" Detail="{Binding Data}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <BoxView HeightRequest="50" Color="Transparent"/>
+      
+
+        <Button Text="Adicionar" Style="{StaticResource BotaoSalvar}" Clicked="OnAdicionarClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

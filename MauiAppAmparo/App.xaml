@@ -1,0 +1,65 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAmparo.App">
+    <Application.Resources>
+        <!-- Fundo azul escuro -->
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="#003366"/>
+        </Style>
+
+        <!-- Labels brancos -->
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <!-- Botões brancos com texto azul escuro, menores e refinados -->
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="TextColor" Value="#003366"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <!-- Ajustado para menor altura -->
+            <Setter Property="Padding" Value="10"/>
+            <!-- Adicionado espaçamento interno -->
+        </Style>
+
+        <!-- Botao Salvar -->
+        <Style TargetType="Button" x:Key="BotaoSalvar">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="TextColor" Value="#003366"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        
+        <!-- Botao Voltar -->
+        <Style TargetType="Button" x:Key="BotaoVoltar">
+            <Setter Property="BackgroundColor" Value="#003366"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="HeightRequest" Value="40"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="BorderWidth" Value="2"/>
+            <Setter Property="BorderColor" Value="White"/>
+        </Style>
+
+
+        <!-- Campos de entrada com borda -->
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="BorderColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="#CCCCCC"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+    </Application.Resources>
+</Application>

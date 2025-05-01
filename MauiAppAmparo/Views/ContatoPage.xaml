@@ -1,0 +1,30 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAmparo.Views.ContatoPage"
+             BackgroundColor="#003366">
+
+    <VerticalStackLayout Padding="30" VerticalOptions="Start">
+        <Label Text="Contato de Emergência" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
+
+        <BoxView HeightRequest="70" Color="Transparent"/>
+        
+
+        <Frame>
+            <Entry Placeholder="Nome" x:Name="txtNome"/>
+        </Frame>
+        <Frame>
+            <Entry Placeholder="Celular com DDD" x:Name="txtCelular" Keyboard="Telephone"/>
+        </Frame>
+        <Frame>
+            <Entry Placeholder="Parentesco" x:Name="txtParentesco"/>
+        </Frame>
+
+        <BoxView HeightRequest="70" Color="Transparent"/>
+       
+
+        <Button Text="Salvar" Style="{StaticResource BotaoSalvar}" Clicked="OnSalvarClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>

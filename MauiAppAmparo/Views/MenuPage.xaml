@@ -1,0 +1,28 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAmparo.Views.MenuPage"
+             BackgroundColor="#003366">
+
+    <VerticalStackLayout Padding="30" VerticalOptions="Start">
+        <Image Source="logo.png" HeightRequest="180" WidthRequest="180" Margin="0,20,0,10" HorizontalOptions="Center"/>
+        
+        <Label Text="AMPARO" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
+        <Label Text="SEU MONITOR DE SAÚDE" FontSize="18" HorizontalOptions="Center" TextColor="White" Margin="0,0,0,20"/>
+        <BoxView HeightRequest="20" Color="Transparent"/>
+
+
+        <Button Text="Pressão Arterial" Clicked="OnPressaoClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Índice Glicêmico" Clicked="OnGlicemiaClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Lembretes" Clicked="OnLembretesClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Minhas Informações" Clicked="OnInformacoesClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Contato de Emergência" Clicked="OnContatoClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,25 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MauiAppAmparo.Views.LoginPage" BackgroundColor="#003366">
+    
+    <VerticalStackLayout Padding="30" VerticalOptions="Start">
+
+        <Image Source="logo.png" HeightRequest="180" WidthRequest="180" Margin="0,20,0,10" HorizontalOptions="Center"/>
+        <Label Text="AMPARO" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
+        <Label Text="SEU MONITOR DE SAÚDE" FontSize="18" HorizontalOptions="Center" TextColor="White" Margin="0,0,0,20"/>
+        
+        <Frame>
+            <Entry Placeholder="Usuário" x:Name="txtUsuario"/>
+        </Frame>
+        
+        
+        <Frame>
+            <Entry Placeholder="Senha" x:Name="txtSenha" IsPassword="True"/>
+        </Frame>
+        
+        <BoxView HeightRequest="30" Color="Transparent"/>
+        
+        <Button Text="Entrar" Style="{StaticResource BotaoSalvar}" Clicked="OnLoginClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+        <Button Text="Cadastrar" Style="{StaticResource BotaoVoltar}" Clicked="OnCadastroClicked"/>
+        
+    </VerticalStackLayout>
+</ContentPage>
