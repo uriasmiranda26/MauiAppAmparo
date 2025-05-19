@@ -11,13 +11,14 @@ namespace MauiAppAmparo.Views
 
         private void OnCadastrarClicked(object sender, EventArgs e)
         {
-         
+
             DisplayAlert("Cadastro", "Usuário cadastrado com sucesso!", "OK");
         }
 
         private void OnVoltarClicked(object sender, EventArgs e)
         {
-            Navigation.PopAsync(); 
+            Navigation.PopAsync();
 
+        }
     }
 }
