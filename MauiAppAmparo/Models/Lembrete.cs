@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace MauiAppAmparo
+namespace MauiAppAmparo.Models
 {
     public class Lembrete
     {

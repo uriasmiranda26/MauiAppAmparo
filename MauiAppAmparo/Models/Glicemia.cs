@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MauiAppAmparo.Models
 {
-    class Glicemia
+    public class Glicemia
     {
         [Key]
         public int Id { get; set; }
