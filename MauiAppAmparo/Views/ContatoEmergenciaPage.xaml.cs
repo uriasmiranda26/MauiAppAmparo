@@ -1,3 +1,4 @@
+using MauiAppAmparo.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace MauiAppAmparo.Views
@@ -7,7 +8,10 @@ namespace MauiAppAmparo.Views
         public ContatoEmergenciaPage()
         {
             InitializeComponent();
+            BindingContext = new ContatoEmergenciaViewModel();
         }
+
+
 
         private async void OnVoltarClicked(object sender, EventArgs e)
         {

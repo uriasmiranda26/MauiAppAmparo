@@ -7,7 +7,9 @@ namespace MauiAppAmparo.Views
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel();
         }
+
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {

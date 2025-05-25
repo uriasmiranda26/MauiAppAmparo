@@ -1,40 +1,42 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
              x:Class="MauiAppAmparo.Views.CadastroLembretePage"
              BackgroundColor="#003366">
+
+    <ContentPage.BindingContext>
+        <local:LembreteViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="30" VerticalOptions="Start">
         <Label Text="Adicionar Lembrete" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="20" Color="Transparent"/>
 
-        
         <Label Text="Medicamentos" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start"/>
         <Frame>
-            <Entry Placeholder="Nome do Medicamento" x:Name="txtNomeMedicamento"/>
+            <Entry Placeholder="Nome do Medicamento" Text="{Binding NomeMedicamento}" />
         </Frame>
         <Frame>
-            <Entry Placeholder="Horário do Medicamento" x:Name="txtHorarioMedicamento"/>
+            <Entry Placeholder="Horário do Medicamento" Text="{Binding HorarioMedicamento}" />
         </Frame>
 
         <BoxView HeightRequest="30" Color="Transparent"/>
 
-       
-        
         <Label Text="Consultas/Exames" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start"/>
         <Frame>
-            <Entry Placeholder="Descrição da Consulta ou Exame" x:Name="txtTipoConsultaExame"/>
+            <Entry Placeholder="Descrição da Consulta ou Exame" Text="{Binding TipoConsultaExame}" />
         </Frame>
         <Frame>
-            <Entry Placeholder="Data da Consulta ou Exame" x:Name="txtDataConsulta"/>
+            <Entry Placeholder="Data da Consulta ou Exame" Text="{Binding DataConsultaExame}" />
         </Frame>
         <Frame>
-            <Entry Placeholder="Horário da Consulta ou Exame" x:Name="txtHorarioConsulta"/>
+            <Entry Placeholder="Horário da Consulta ou Exame" Text="{Binding HorarioConsultaExame}" />
         </Frame>
 
         <BoxView HeightRequest="50" Color="Transparent"/>
 
-        <Button Text="Salvar Lembrete" Style="{StaticResource BotaoSalvar}" Clicked="OnSalvarClicked"/>
+        <Button Text="Salvar Lembrete" Style="{StaticResource BotaoSalvar}" Command="{Binding AdicionarLembreteCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
         <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
     </VerticalStackLayout>

@@ -7,6 +7,7 @@ namespace MauiAppAmparo.Views
         public CadastroPage()
         {
             InitializeComponent();
+            BindingContext = new CadastroViewModel();
         }
 
         private void OnCadastrarClicked(object sender, EventArgs e)

@@ -7,6 +7,7 @@ namespace MauiAppAmparo.Views
         public InformacoesPage()
         {
             InitializeComponent();
+            BindingContext = new InformacoesViewModel();
         }
 
         private async void OnVerContatoEmergenciaClicked(object sender, EventArgs e)

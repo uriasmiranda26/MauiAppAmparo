@@ -1,21 +1,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
              x:Class="MauiAppAmparo.Views.MedicoesPressaoPage"
              BackgroundColor="#003366">
+
+    <ContentPage.BindingContext>
+        <local:MedicoesPressaoViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="30" VerticalOptions="Start">
         <Label Text="Medições de Pressão Arterial" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="20" Color="Transparent"/>
 
-        <ListView x:Name="lstMedicoesPressao">
+        <ListView ItemsSource="{Binding MedicoesPressao}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Detalhes}" FontSize="18" TextColor="White"/>
+                            <Label Text="{Binding Sistolica}" FontSize="18" TextColor="White"/>
+                            <Label Text="{Binding Diastolica}" FontSize="18" TextColor="White"/>
+                            <Label Text="{Binding DataHora}" FontSize="14" TextColor="White"/>
                             <BoxView HeightRequest="15" Color="Transparent"/>
-                           
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -24,6 +30,6 @@
 
         <BoxView HeightRequest="50" Color="Transparent"/>
 
-        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
+        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Command="{Binding VoltarCommand}" />
     </VerticalStackLayout>
 </ContentPage>

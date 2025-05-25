@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiAppAmparo.Helpers
+namespace MauiAppAmparo.Services
 {
-    public class PressaoArterialHelper
+    public class PressaoArterialService
     {
         private readonly AppDbContext _context;
 
-        public PressaoArterialHelper()
+        public PressaoArterialService()
         {
             _context = new AppDbContext();
         }

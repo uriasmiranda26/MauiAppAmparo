@@ -1,32 +1,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
              x:Class="MauiAppAmparo.Views.LembretesPage"
              BackgroundColor="#003366">
+
+    <ContentPage.BindingContext>
+        <local:LembretesViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="20" VerticalOptions="Start">
         <Label Text="Lembretes" FontSize="24" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="20" Color="Transparent"/>
 
-        <ListView x:Name="lstLembretes">
+        <ListView ItemsSource="{Binding Lembretes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Nome}" Detail="{Binding Data}"/>
+                    <TextCell Text="{Binding Descricao}" Detail="{Binding DataHoraLembrete}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
         <BoxView HeightRequest="50" Color="Transparent"/>
 
-    
-        <Button Text="Ver Meus Lembretes" Style="{StaticResource BotaoSalvar}" Clicked="OnVerLembretesClicked"/>
+        <Button Text="Ver Meus Lembretes" Style="{StaticResource BotaoSalvar}" Command="{Binding VerLembretesCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Criar Novo Lembrete" Style="{StaticResource BotaoSalvar}" Clicked="OnAdicionarClicked"/>
+        <Button Text="Criar Novo Lembrete" Style="{StaticResource BotaoSalvar}" Command="{Binding AdicionarLembreteCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
-
-      
+        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Command="{Binding VoltarCommand}" />
     </VerticalStackLayout>
 </ContentPage>

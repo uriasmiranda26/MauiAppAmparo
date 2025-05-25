@@ -1,22 +1,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
              x:Class="MauiAppAmparo.Views.InformacoesPage"
              BackgroundColor="#003366">
+
+    <ContentPage.BindingContext>
+        <local:InformacoesViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="30" VerticalOptions="Start">
         <Label Text="Minhas Informações" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="20" Color="Transparent"/>
 
-        <Button Text="Ver Contato de Emergência" Style="{StaticResource BotaoSalvar}" Clicked="OnVerContatoEmergenciaClicked"/>
+        <Button Text="Ver Contato de Emergência" Style="{StaticResource BotaoSalvar}" Command="{Binding VerContatoEmergenciaCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Ver Medições de Pressão Arterial" Style="{StaticResource BotaoSalvar}" Clicked="OnVerMedicoesPressaoClicked"/>
+        <Button Text="Ver Medições de Pressão Arterial" Style="{StaticResource BotaoSalvar}" Command="{Binding VerMedicoesPressaoCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Ver Medições de Índice Glicêmico" Style="{StaticResource BotaoSalvar}" Clicked="OnVerMedicoesGlicemiaClicked"/>
+        <Button Text="Ver Medições de Índice Glicêmico" Style="{StaticResource BotaoSalvar}" Command="{Binding VerMedicoesGlicemiaCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
+        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Command="{Binding VoltarCommand}" />
     </VerticalStackLayout>
 </ContentPage>

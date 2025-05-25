@@ -5,7 +5,9 @@ namespace MauiAppAmparo.Views
         public GlicemiaPage()
         {
             InitializeComponent();
+            BindingContext = new GlicemiaViewModel();
         }
+
 
         private async void OnSalvarClicked(object sender, EventArgs e)
         {

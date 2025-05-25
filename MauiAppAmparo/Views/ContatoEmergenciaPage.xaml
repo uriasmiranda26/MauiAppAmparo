@@ -1,21 +1,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
              x:Class="MauiAppAmparo.Views.ContatoEmergenciaPage"
              BackgroundColor="#003366">
+
+    <ContentPage.BindingContext>
+        <local:ContatoEmergenciaViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="30" VerticalOptions="Start">
         <Label Text="Contato de Emergência" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="20" Color="Transparent"/>
 
-        <Label Text="Nome: João Silva" FontSize="18" TextColor="White"/>
-        <Label Text="Telefone: (11) 91234-5678" FontSize="18" TextColor="White"/>
-        <Label Text="Parentesco: Irmão" FontSize="18" TextColor="White"/>
+        <CollectionView ItemsSource="{Binding ContatosEmergencia}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Nome}" FontSize="18" TextColor="White"/>
+                        <Label Text="{Binding Telefone}" FontSize="18" TextColor="White"/>
+                        <Label Text="{Binding Relacao}" FontSize="18" TextColor="White"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
         <BoxView HeightRequest="50" Color="Transparent"/>
 
         <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
-        
-        
+
     </VerticalStackLayout>
 </ContentPage>

@@ -7,7 +7,9 @@ namespace MauiAppAmparo.Views
         public LembretesPage()
         {
             InitializeComponent();
+            BindingContext = new LembretesViewModel();
         }
+
 
         private async void OnVerLembretesClicked(object sender, EventArgs e)
         {

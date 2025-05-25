@@ -5,7 +5,9 @@ namespace MauiAppAmparo.Views
         public ContatoPage()
         {
             InitializeComponent();
+            BindingContext = new ContatoEmergenciaViewModel();
         }
+
 
         private async void OnSalvarClicked(object sender, EventArgs e)
         {

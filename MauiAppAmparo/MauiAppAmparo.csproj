@@ -57,7 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Helpers\SQLiteDatabaseHelper.cs" />
+	  <AndroidResource Remove="NovaPasta\**" />
+	  <Compile Remove="NovaPasta\**" />
+	  <EmbeddedResource Remove="NovaPasta\**" />
+	  <MauiCss Remove="NovaPasta\**" />
+	  <MauiXaml Remove="NovaPasta\**" />
+	  <None Remove="NovaPasta\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Services\SQLiteDatabaseHelper.cs" />
 	  <Compile Remove="Models\Medicamentos.cs" />
 	</ItemGroup>
 
@@ -102,9 +111,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PressaoPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\SplashPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

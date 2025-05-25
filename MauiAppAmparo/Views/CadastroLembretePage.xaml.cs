@@ -4,9 +4,23 @@ namespace MauiAppAmparo.Views
 {
     public partial class CadastroLembretePage : ContentPage
     {
+        private Entry txtNomeMedicamento;
+        private Entry txtTipoConsultaExame;
+        private Entry txtHorarioMedicamento;
+        private Entry txtDataConsulta;
+        private Entry txtHorarioConsulta;
+
         public CadastroLembretePage()
         {
             InitializeComponent();
+            BindingContext = new LembretesViewModel();
+
+            // Initialize the Entry fields to avoid null reference issues
+            txtNomeMedicamento = new Entry();
+            txtTipoConsultaExame = new Entry();
+            txtHorarioMedicamento = new Entry();
+            txtDataConsulta = new Entry();
+            txtHorarioConsulta = new Entry();
         }
 
         private async void OnSalvarClicked(object sender, EventArgs e)

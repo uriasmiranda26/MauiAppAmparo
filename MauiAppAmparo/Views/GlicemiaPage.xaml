@@ -1,25 +1,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
              x:Class="MauiAppAmparo.Views.GlicemiaPage"
              BackgroundColor="#003366">
+
+    <ContentPage.BindingContext>
+        <local:GlicemiaViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="30" VerticalOptions="Start">
         <Label Text="Registro de Índice Glicêmico" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="50" Color="Transparent"/>
-   
 
         <Frame>
-            <Entry Placeholder="Data" x:Name="txtData" Keyboard="Numeric"/>
+            <Entry Placeholder="Data" Text="{Binding Data}" Keyboard="Numeric"/>
         </Frame>
         <Frame>
-            <Entry Placeholder="Medição" x:Name="txtMedicao" Keyboard="Numeric"/>
+            <Entry Placeholder="Medição" Text="{Binding Medicao}" Keyboard="Numeric"/>
         </Frame>
 
         <BoxView HeightRequest="70" Color="Transparent"/>
-      
 
-        <Button Text="Salvar" Style="{StaticResource BotaoSalvar}" Clicked="OnSalvarClicked"/>
+        <Button Text="Salvar" Style="{StaticResource BotaoSalvar}" Command="{Binding SalvarGlicemiaCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
         <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
     </VerticalStackLayout>

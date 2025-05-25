@@ -1,25 +1,30 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MauiAppAmparo.Views.LoginPage" BackgroundColor="#003366">
-    
-    <VerticalStackLayout Padding="30" VerticalOptions="Start">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppAmparo.ViewModels"
+             x:Class="MauiAppAmparo.Views.LoginPage"
+             BackgroundColor="#003366">
 
+    <ContentPage.BindingContext>
+        <local:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="30" VerticalOptions="Start">
         <Image Source="logo.png" HeightRequest="180" WidthRequest="180" Margin="0,20,0,10" HorizontalOptions="Center"/>
         <Label Text="AMPARO" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
         <Label Text="SEU MONITOR DE SAÚDE" FontSize="18" HorizontalOptions="Center" TextColor="White" Margin="0,0,0,20"/>
-        
+
         <Frame>
-            <Entry Placeholder="Usuário" x:Name="txtUsuario"/>
+            <Entry Placeholder="Usuário" Text="{Binding Usuario}" />
         </Frame>
-        
-        
+
         <Frame>
-            <Entry Placeholder="Senha" x:Name="txtSenha" IsPassword="True"/>
+            <Entry Placeholder="Senha" Text="{Binding Senha}" IsPassword="True"/>
         </Frame>
-        
+
         <BoxView HeightRequest="30" Color="Transparent"/>
-        
-        <Button Text="Entrar" Style="{StaticResource BotaoSalvar}" Clicked="OnLoginClicked"/>
+
+        <Button Text="Entrar" Style="{StaticResource BotaoSalvar}" Command="{Binding LoginCommand}" />
         <BoxView HeightRequest="15" Color="Transparent"/>
-        <Button Text="Cadastrar" Style="{StaticResource BotaoVoltar}" Clicked="OnCadastroClicked"/>
-        
+        <Button Text="Cadastrar" Style="{StaticResource BotaoVoltar}" Command="{Binding CadastroCommand}" />
     </VerticalStackLayout>
 </ContentPage>
