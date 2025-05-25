@@ -22,3 +22,5 @@ namespace MauiAppAmparo.Views
         }
     }
 }
+
+

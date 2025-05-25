@@ -9,10 +9,16 @@ namespace MauiAppAmparo.Views
             InitializeComponent();
         }
 
+        private async void OnVerLembretesClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ListaLembretesPage());
+        }
+
         private async void OnAdicionarClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CadastroLembretePage());
         }
+
         private async void OnVoltarClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

@@ -3,14 +3,20 @@
              x:Class="MauiAppAmparo.Views.InformacoesPage"
              BackgroundColor="#003366">
 
-    <VerticalStackLayout Padding="20" VerticalOptions="Start">
-        <Label Text="Minhas Informações" FontSize="24" HorizontalOptions="Center" TextColor="White"/>
+    <VerticalStackLayout Padding="30" VerticalOptions="Start">
+        <Label Text="Minhas Informações" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
 
-        <BoxView HeightRequest="70" Color="Transparent"/>
-        
+        <BoxView HeightRequest="20" Color="Transparent"/>
 
-        <Button Text="Ver últimas medições" Style="{StaticResource BotaoSalvar}" Clicked="OnVerMedicoesClicked"/>
+        <Button Text="Ver Contato de Emergência" Style="{StaticResource BotaoSalvar}" Clicked="OnVerContatoEmergenciaClicked"/>
         <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Ver Medições de Pressão Arterial" Style="{StaticResource BotaoSalvar}" Clicked="OnVerMedicoesPressaoClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Ver Medições de Índice Glicêmico" Style="{StaticResource BotaoSalvar}" Clicked="OnVerMedicoesGlicemiaClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
         <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
     </VerticalStackLayout>
 </ContentPage>

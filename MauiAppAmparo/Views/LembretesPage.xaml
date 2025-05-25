@@ -7,7 +7,6 @@
         <Label Text="Lembretes" FontSize="24" HorizontalOptions="Center" TextColor="White"/>
 
         <BoxView HeightRequest="20" Color="Transparent"/>
-      
 
         <ListView x:Name="lstLembretes">
             <ListView.ItemTemplate>
@@ -18,10 +17,16 @@
         </ListView>
 
         <BoxView HeightRequest="50" Color="Transparent"/>
-      
 
-        <Button Text="Adicionar" Style="{StaticResource BotaoSalvar}" Clicked="OnAdicionarClicked"/>
+    
+        <Button Text="Ver Meus Lembretes" Style="{StaticResource BotaoSalvar}" Clicked="OnVerLembretesClicked"/>
         <BoxView HeightRequest="15" Color="Transparent"/>
+
+        <Button Text="Criar Novo Lembrete" Style="{StaticResource BotaoSalvar}" Clicked="OnAdicionarClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+
         <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
+
+      
     </VerticalStackLayout>
 </ContentPage>

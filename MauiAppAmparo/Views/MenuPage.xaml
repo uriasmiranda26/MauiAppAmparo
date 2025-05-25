@@ -11,18 +11,22 @@
         <BoxView HeightRequest="20" Color="Transparent"/>
 
 
-        <Button Text="Pressão Arterial" Clicked="OnPressaoClicked"/>
+        <Button Text="Meus Lembretes" Clicked="OnLembretesClicked"/>
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Índice Glicêmico" Clicked="OnGlicemiaClicked"/>
+        <Button Text="Ver Minhas Informações" Clicked="OnInformacoesClicked"/>
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Lembretes" Clicked="OnLembretesClicked"/>
+        <Button Text="Registrar Pressão Arterial" Clicked="OnPressaoClicked"/>
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Minhas Informações" Clicked="OnInformacoesClicked"/>
+        <Button Text="Registrar Índice Glicêmico" Clicked="OnGlicemiaClicked"/>
         <BoxView HeightRequest="15" Color="Transparent"/>
 
-        <Button Text="Contato de Emergência" Clicked="OnContatoClicked"/>
+
+        <Button Text="Adicionar Contato de Emergência" Clicked="OnContatoClicked"/>
+        <BoxView HeightRequest="15" Color="Transparent"/>
+        
+       
     </VerticalStackLayout>
 </ContentPage>

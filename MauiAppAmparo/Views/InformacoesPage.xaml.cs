@@ -1,3 +1,5 @@
+using Microsoft.Maui.Controls;
+
 namespace MauiAppAmparo.Views
 {
     public partial class InformacoesPage : ContentPage
@@ -7,9 +9,19 @@ namespace MauiAppAmparo.Views
             InitializeComponent();
         }
 
-        private async void OnVerMedicoesClicked(object sender, EventArgs e)
+        private async void OnVerContatoEmergenciaClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Informações", "Aqui estarão as medições dos últimos 15 dias!", "OK");
+            await Navigation.PushAsync(new ContatoEmergenciaPage());
+        }
+
+        private async void OnVerMedicoesPressaoClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MedicoesPressaoPage());
+        }
+
+        private async void OnVerMedicoesGlicemiaClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MedicoesGlicemiaPage());
         }
 
         private async void OnVoltarClicked(object sender, EventArgs e)

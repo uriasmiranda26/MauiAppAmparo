@@ -1,0 +1,29 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAmparo.Views.MedicoesGlicemiaPage"
+             BackgroundColor="#003366">
+
+    <VerticalStackLayout Padding="30" VerticalOptions="Start">
+        <Label Text="Medições de Índice Glicêmico" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
+
+        <BoxView HeightRequest="20" Color="Transparent"/>
+
+        <ListView x:Name="lstMedicoesGlicemia">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Detalhes}" FontSize="18" TextColor="White"/>
+                            <BoxView HeightRequest="15" Color="Transparent"/>
+                           
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <BoxView HeightRequest="50" Color="Transparent"/>
+
+        <Button Text="Voltar" Style="{StaticResource BotaoVoltar}" Clicked="OnVoltarClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
