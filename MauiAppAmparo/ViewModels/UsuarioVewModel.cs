@@ -1,12 +1,7 @@
 ﻿using MauiAppAmparo.Models;
 using MauiAppAmparo.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MauiAppAmparo.ViewModels
 {
@@ -15,9 +10,9 @@ namespace MauiAppAmparo.ViewModels
         private readonly UsuarioService _service;
         public ObservableCollection<Usuario> Usuarios { get; set; }
 
-        public UsuarioViewModel()
+        public UsuarioViewModel(AppDbContext context)
         {
-            _service = new UsuarioService();
+            _service = new UsuarioService(context);
             Usuarios = new ObservableCollection<Usuario>(_service.ObterTodosUsuarios());
         }
 
@@ -29,7 +24,7 @@ namespace MauiAppAmparo.ViewModels
             OnPropertyChanged(nameof(Usuarios));
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged; // Marked as nullable to fix CS8618
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

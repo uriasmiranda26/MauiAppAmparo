@@ -3,42 +3,49 @@ using System.Windows.Input;
 using MauiAppAmparo;
 using MauiAppAmparo.Services;
 using MauiAppAmparo.Models;
-using MauiAppAmparo.Services;
-using Microsoft.Maui.Controls;
 
-public class ContatoEmergenciaViewModel : INotifyPropertyChanged
+namespace MauiAppAmparo.ViewModels
 {
-    private readonly ContatoEmergenciaService _service;
-
-    public string Nome { get; set; }
-    public string Celular { get; set; }
-    public string Parentesco { get; set; }
-
-    public ICommand SalvarContatoCommand { get; }
-
-    public ContatoEmergenciaViewModel()
+    public class ContatoEmergenciaViewModel : INotifyPropertyChanged
     {
-        _service = new ContatoEmergenciaService();
-        SalvarContatoCommand = new Command(SalvarContato);
-    }
+        private readonly ContatoEmergenciaService _service;
 
-    private async void SalvarContato()
-    {
-        if (string.IsNullOrWhiteSpace(Nome) || string.IsNullOrWhiteSpace(Celular) || string.IsNullOrWhiteSpace(Parentesco))
+        public string Nome { get; set; } = string.Empty; // Fix for CS8618
+        public string Celular { get; set; } = string.Empty; // Fix for CS8618
+        public string Parentesco { get; set; } = string.Empty; // Fix for CS8618
+
+        public ICommand SalvarContatoCommand { get; }
+
+        public ContatoEmergenciaViewModel()
         {
-            await App.Current.MainPage.DisplayAlert("Erro", "Todos os campos são obrigatórios.", "OK");
-            return;
+            _service = new ContatoEmergenciaService();
+            SalvarContatoCommand = new Command(SalvarContato);
         }
 
-        var contato = new ContatoEmergencia { Nome = Nome, Telefone = Celular, Relacao = Parentesco };
-        _service.AdicionarContato(contato);
+        private async void SalvarContato()
+        {
+            if (string.IsNullOrWhiteSpace(Nome) || string.IsNullOrWhiteSpace(Celular) || string.IsNullOrWhiteSpace(Parentesco))
+            {
+                if (App.Current is Application app && app.MainPage != null)
+                {
+                    await app.MainPage.DisplayAlert("Erro", "Todos os campos são obrigatórios.", "OK");
+                }
+                return;
+            }
 
-        await App.Current.MainPage.DisplayAlert("Sucesso", "Contato salvo com sucesso!", "OK");
-    }
+            var contato = new ContatoEmergencia { Nome = Nome, Telefone = Celular, Relacao = Parentesco };
+            _service.AdicionarContato(contato);
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (App.Current is Application appSuccess && appSuccess.MainPage != null)
+            {
+                await appSuccess.MainPage.DisplayAlert("Sucesso", "Contato salvo com sucesso!", "OK");
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged; // Fix for CS8618
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

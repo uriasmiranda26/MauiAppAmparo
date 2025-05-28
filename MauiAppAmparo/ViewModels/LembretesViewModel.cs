@@ -7,50 +7,59 @@ using MauiAppAmparo.Services;
 using MauiAppAmparo.Views;
 using Microsoft.Maui.Controls;
 
-public class LembretesViewModel : INotifyPropertyChanged
+namespace MauiAppAmparo.ViewModels
 {
-    private readonly LembreteService _service;
-
-    public ObservableCollection<Lembrete> Lembretes { get; set; }
-
-    public ICommand VerLembretesCommand { get; }
-    public ICommand AdicionarLembreteCommand { get; }
-    public ICommand VoltarCommand { get; }
-
-    public LembretesViewModel()
+    public class LembretesViewModel : INotifyPropertyChanged
     {
-        _service = new LembreteService();
-        Lembretes = new ObservableCollection<Lembrete>(_service.ObterLembretesPendentes());
+        private readonly LembreteService _service;
 
-        VerLembretesCommand = new Command(ObterLembretes);
-        AdicionarLembreteCommand = new Command(OnAdicionarLembrete);
-        VoltarCommand = new Command(OnVoltar);
-    }
+        public ObservableCollection<Lembrete> Lembretes { get; set; }
 
-    private void ObterLembretes()
-    {
-        Lembretes.Clear();
-        var lembretes = _service.ObterLembretesPendentes();
-        foreach (var lembrete in lembretes)
+        public ICommand VerLembretesCommand { get; }
+        public ICommand AdicionarLembreteCommand { get; }
+        public ICommand VoltarCommand { get; }
+
+        public LembretesViewModel()
         {
-            Lembretes.Add(lembrete);
+            _service = new LembreteService();
+            Lembretes = new ObservableCollection<Lembrete>(_service.ObterLembretesPendentes());
+
+            VerLembretesCommand = new Command(ObterLembretes);
+            AdicionarLembreteCommand = new Command(OnAdicionarLembrete);
+            VoltarCommand = new Command(OnVoltar);
         }
-        OnPropertyChanged(nameof(Lembretes));
-    }
 
-    private async void OnAdicionarLembrete()
-    {
-        await App.Current.MainPage.Navigation.PushAsync(new CadastroLembretePage());
-    }
+        private void ObterLembretes()
+        {
+            Lembretes.Clear();
+            var lembretes = _service.ObterLembretesPendentes();
+            foreach (var lembrete in lembretes)
+            {
+                Lembretes.Add(lembrete);
+            }
+            OnPropertyChanged(nameof(Lembretes));
+        }
 
-    private async void OnVoltar()
-    {
-        await App.Current.MainPage.Navigation.PopAsync();
-    }
+        private async void OnAdicionarLembrete()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PushAsync(new CadastroLembretePage());
+            }
+        }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        private async void OnVoltar()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PopAsync();
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged; // Marked as nullable to fix CS8618
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

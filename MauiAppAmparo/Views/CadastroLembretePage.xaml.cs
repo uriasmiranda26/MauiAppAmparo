@@ -1,3 +1,4 @@
+using MauiAppAmparo.ViewModels;
 using Microsoft.Maui.Controls;
 
 namespace MauiAppAmparo.Views

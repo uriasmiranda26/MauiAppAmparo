@@ -1,13 +1,13 @@
-using Microsoft.Maui.Controls;
+using MauiAppAmparo.ViewModels;
 
 namespace MauiAppAmparo.Views
 {
     public partial class LoginPage : ContentPage
     {
-        public LoginPage()
+        public LoginPage(LoginViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel();
+            BindingContext = viewModel;
         }
 
 

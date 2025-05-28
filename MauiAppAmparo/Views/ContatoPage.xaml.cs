@@ -1,3 +1,5 @@
+using MauiAppAmparo.ViewModels;
+
 namespace MauiAppAmparo.Views
 {
     public partial class ContatoPage : ContentPage

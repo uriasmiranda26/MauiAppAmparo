@@ -3,38 +3,53 @@ using MauiAppAmparo;
 using MauiAppAmparo.Views;
 using Microsoft.Maui.Controls;
 
-public class InformacoesViewModel
+namespace MauiAppAmparo.ViewModels
 {
-    public ICommand VerContatoEmergenciaCommand { get; }
-    public ICommand VerMedicoesPressaoCommand { get; }
-    public ICommand VerMedicoesGlicemiaCommand { get; }
-    public ICommand VoltarCommand { get; }
-
-    public InformacoesViewModel()
+    public class InformacoesViewModel
     {
-        VerContatoEmergenciaCommand = new Command(OnVerContatoEmergencia);
-        VerMedicoesPressaoCommand = new Command(OnVerMedicoesPressao);
-        VerMedicoesGlicemiaCommand = new Command(OnVerMedicoesGlicemia);
-        VoltarCommand = new Command(OnVoltar);
-    }
+        public ICommand VerContatoEmergenciaCommand { get; }
+        public ICommand VerMedicoesPressaoCommand { get; }
+        public ICommand VerMedicoesGlicemiaCommand { get; }
+        public ICommand VoltarCommand { get; }
 
-    private async void OnVerContatoEmergencia()
-    {
-        await App.Current.MainPage.Navigation.PushAsync(new ContatoPage());
-    }
+        public InformacoesViewModel()
+        {
+            VerContatoEmergenciaCommand = new Command(OnVerContatoEmergencia);
+            VerMedicoesPressaoCommand = new Command(OnVerMedicoesPressao);
+            VerMedicoesGlicemiaCommand = new Command(OnVerMedicoesGlicemia);
+            VoltarCommand = new Command(OnVoltar);
+        }
 
-    private async void OnVerMedicoesPressao()
-    {
-        await App.Current.MainPage.Navigation.PushAsync(new PressaoArterialPage());
-    }
+        private async void OnVerContatoEmergencia()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PushAsync(new ContatoPage());
+            }
+        }
 
-    private async void OnVerMedicoesGlicemia()
-    {
-        await App.Current.MainPage.Navigation.PushAsync(new GlicemiaPage());
-    }
+        private async void OnVerMedicoesPressao()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PushAsync(new PressaoPage());
+            }
+        }
 
-    private async void OnVoltar()
-    {
-        await App.Current.MainPage.Navigation.PopAsync();
+        private async void OnVerMedicoesGlicemia()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PushAsync(new GlicemiaPage());
+            }
+        }
+
+        private async void OnVoltar()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PopAsync();
+            }
+        }
     }
 }

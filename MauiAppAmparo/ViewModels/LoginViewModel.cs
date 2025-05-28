@@ -1,51 +1,60 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
-using MauiAppAmparo;
-using MauiAppAmparo.Models;
-using MauiAppAmparo.Services;
+﻿using MauiAppAmparo.Services;
 using MauiAppAmparo.Views;
-using Microsoft.Maui.Controls;
+using System.ComponentModel;
+using System.Windows.Input;
 
-public class LoginViewModel : INotifyPropertyChanged
+namespace MauiAppAmparo.ViewModels
 {
-    private readonly UsuarioService _service;
-
-    public string Usuario { get; set; }
-    public string Senha { get; set; }
-
-    public ICommand LoginCommand { get; }
-    public ICommand CadastroCommand { get; }
-
-    public LoginViewModel()
+    public class LoginViewModel : INotifyPropertyChanged
     {
-        _service = new UsuarioService();
-        LoginCommand = new Command(OnLogin);
-        CadastroCommand = new Command(OnCadastro);
-    }
+        private readonly UsuarioService _service;
 
-    private async void OnLogin()
-    {
-        var usuario = _service.AutenticarUsuario(Usuario, Senha);
+        public string Usuario { get; set; } = string.Empty; // Fix for CS8618  
+        public string Senha { get; set; } = string.Empty;   // Fix for CS8618  
 
-        if (usuario != null)
+        public ICommand LoginCommand { get; }
+        public ICommand CadastroCommand { get; }
+
+        public LoginViewModel(AppDbContext context) // Updated constructor to accept AppDbContext  
         {
-            await App.Current.MainPage.DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
-            await App.Current.MainPage.Navigation.PushAsync(new InformacoesPage());
+            _service = new UsuarioService(context); // Pass context to UsuarioService  
+            LoginCommand = new Command(OnLogin);
+            CadastroCommand = new Command(OnCadastro);
         }
-        else
+
+        private async void OnLogin()
         {
-            await App.Current.MainPage.DisplayAlert("Erro", "Usuário ou senha incorretos.", "OK");
+            var usuario = _service.AutenticarUsuario(Usuario, Senha);
+
+            if (usuario != null)
+            {
+                if (App.Current is Application app && app.MainPage != null) // Fix for CS1061
+                {
+                    await app.MainPage.DisplayAlert("Sucesso", "Login realizado com sucesso!", "OK");
+                    await app.MainPage.Navigation.PushAsync(new InformacoesPage());
+                }
+            }
+            else
+            {
+                if (App.Current is Application app && app.MainPage != null) // Fix for CS1061
+                {
+                    await app.MainPage.DisplayAlert("Erro", "Usuário ou senha incorretos.", "OK");
+                }
+            }
         }
-    }
 
-    private async void OnCadastro()
-    {
-        await App.Current.MainPage.Navigation.PushAsync(new CadastroPage());
-    }
+        private async void OnCadastro()
+        {
+            if (App.Current is Application app && app.MainPage != null) // Fix for CS1061
+            {
+                await app.MainPage.Navigation.PushAsync(new CadastroPage());
+            }
+        }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public event PropertyChangedEventHandler? PropertyChanged; // Fix for CS8618  
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

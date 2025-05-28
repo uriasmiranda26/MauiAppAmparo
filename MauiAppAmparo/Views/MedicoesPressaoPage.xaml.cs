@@ -1,5 +1,4 @@
-using Microsoft.Maui.Controls;
-using System.Collections.Generic;
+using MauiAppAmparo.ViewModels;
 
 namespace MauiAppAmparo.Views
 {

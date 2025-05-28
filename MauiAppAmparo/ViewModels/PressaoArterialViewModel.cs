@@ -27,7 +27,10 @@ public class PressaoViewModel : INotifyPropertyChanged
     {
         if (string.IsNullOrWhiteSpace(Data) || string.IsNullOrWhiteSpace(Sistolica) || string.IsNullOrWhiteSpace(Diastolica))
         {
-            await App.Current.MainPage.DisplayAlert("Erro", "Todos os campos são obrigatórios.", "OK");
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.DisplayAlert("Erro", "Todos os campos são obrigatórios.", "OK");
+            }
             return;
         }
 
@@ -41,12 +44,18 @@ public class PressaoViewModel : INotifyPropertyChanged
 
         _service.AdicionarPressao(pressao);
 
-        await App.Current.MainPage.DisplayAlert("Sucesso", "Registro de pressão arterial salvo!", "OK");
+        if (App.Current is Application appSuccess && appSuccess.MainPage != null)
+        {
+            await appSuccess.MainPage.DisplayAlert("Sucesso", "Registro de pressão arterial salvo!", "OK");
+        }
     }
 
     private async void OnVoltar()
     {
-        await App.Current.MainPage.Navigation.PopAsync();
+        if (App.Current is Application app && app.MainPage != null)
+        {
+            await app.MainPage.Navigation.PopAsync();
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

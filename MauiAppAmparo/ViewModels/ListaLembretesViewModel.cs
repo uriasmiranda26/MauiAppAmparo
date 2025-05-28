@@ -6,29 +6,35 @@ using MauiAppAmparo.Models;
 using MauiAppAmparo.Services;
 using Microsoft.Maui.Controls;
 
-public class ListaLembretesViewModel : INotifyPropertyChanged
+namespace MauiAppAmparo.ViewModels
 {
-    private readonly LembreteService _service;
-    public ObservableCollection<Lembrete> Lembretes { get; set; }
-
-    public ICommand VoltarCommand { get; }
-
-    public ListaLembretesViewModel()
+    public class ListaLembretesViewModel : INotifyPropertyChanged
     {
-        _service = new LembreteService();
-        Lembretes = new ObservableCollection<Lembrete>(_service.ObterLembretesPendentes());
+        private readonly LembreteService _service;
+        public ObservableCollection<Lembrete> Lembretes { get; set; }
 
-        VoltarCommand = new Command(OnVoltar);
-    }
+        public ICommand VoltarCommand { get; }
 
-    private async void OnVoltar()
-    {
-        await App.Current.MainPage.Navigation.PopAsync();
-    }
+        public ListaLembretesViewModel()
+        {
+            _service = new LembreteService();
+            Lembretes = new ObservableCollection<Lembrete>(_service.ObterLembretesPendentes());
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            VoltarCommand = new Command(OnVoltar);
+        }
+
+        private async void OnVoltar()
+        {
+            if (App.Current is Application app && app.MainPage != null)
+            {
+                await app.MainPage.Navigation.PopAsync();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

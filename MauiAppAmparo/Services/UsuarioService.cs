@@ -11,25 +11,27 @@ namespace MauiAppAmparo.Services
     {
         private readonly AppDbContext _context;
 
-        public UsuarioService()
+        public UsuarioService(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
-        // Create
+        public Usuario? AutenticarUsuario(string usuario, string senha)
+        {
+            return _context.Usuarios.FirstOrDefault(u => u.Nome == usuario && u.Senha == senha);
+        }
+
         public void AdicionarUsuario(Usuario usuario)
         {
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
         }
 
-        // Read
         public List<Usuario> ObterTodosUsuarios()
         {
             return _context.Usuarios.ToList();
         }
 
-        // Update
         public void AtualizarUsuario(int id, string nome, string email)
         {
             var usuario = _context.Usuarios.Find(id);
@@ -41,7 +43,6 @@ namespace MauiAppAmparo.Services
             }
         }
 
-        // Delete
         public void RemoverUsuario(int id)
         {
             var usuario = _context.Usuarios.Find(id);

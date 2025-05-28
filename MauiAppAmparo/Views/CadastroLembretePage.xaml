@@ -5,7 +5,7 @@
              BackgroundColor="#003366">
 
     <ContentPage.BindingContext>
-        <local:LembreteViewModel />
+        <local:LembretesViewModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="30" VerticalOptions="Start">
