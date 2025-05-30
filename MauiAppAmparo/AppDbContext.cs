@@ -15,7 +15,9 @@ namespace MauiAppAmparo
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=appdata.db");
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "appdata.db");
+            Console.WriteLine($"Database path: {databasePath}");
+            optionsBuilder.UseSqlite($"Filename={databasePath}");
         }
     }
 }
