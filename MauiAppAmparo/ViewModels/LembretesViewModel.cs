@@ -1,11 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows.Input;
-using MauiAppAmparo;
-using MauiAppAmparo.Models;
+﻿using MauiAppAmparo.Models;
 using MauiAppAmparo.Services;
 using MauiAppAmparo.Views;
-using Microsoft.Maui.Controls;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace MauiAppAmparo.ViewModels
 {

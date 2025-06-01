@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
-using MauiAppAmparo;
+﻿using MauiAppAmparo;
 using MauiAppAmparo.Models;
 using MauiAppAmparo.Services;
-using Microsoft.Maui.Controls;
+using System.ComponentModel;
+using System.Windows.Input;
 
 public class PressaoViewModel : INotifyPropertyChanged
 {

@@ -1,7 +1,5 @@
-﻿using System.Windows.Input;
-using MauiAppAmparo;
-using MauiAppAmparo.Views;
-using Microsoft.Maui.Controls;
+﻿using MauiAppAmparo.Views;
+using System.Windows.Input;
 
 namespace MauiAppAmparo.ViewModels
 {

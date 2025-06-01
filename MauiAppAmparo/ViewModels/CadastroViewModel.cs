@@ -1,7 +1,7 @@
-using MauiAppAmparo;
 using MauiAppAmparo.Services;
 using System.ComponentModel;
 using System.Windows.Input;
+using MauiAppAmparo.Models;
 
 namespace MauiAppAmparo.ViewModels
 {
